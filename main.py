@@ -1,8 +1,10 @@
-
 import pygame
+from pygame import mixer
+
+# Init the game
+pygame.init()
 
 #screen resolution &  game params
-
 WIDTH = 1400
 HEIGHT = 800
 FPS = 60
@@ -17,11 +19,16 @@ RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 
-
 # Title and Icon
 pygame.display.set_caption("    ▬▬ι═══════>         ▂▃▅▇█▓▒░۩۞۩      Tales  Of  Swan       ۩۞۩░▒▓█▇▅▃▂       <═══════ι▬▬      ")
 icon = pygame.image.load('assets/gameui/sword.png')
 pygame.display.set_icon(icon)
+
+# Sounds & Background Music
+mixer.music.load('assets/sounds/medieval.ogg')
+mixer.music.play(-1)
+
+
 
 class Player(pygame.sprite.Sprite):
     def __init__(self):
@@ -42,8 +49,6 @@ all_sprites = pygame.sprite.Group()
 player = Player()
 all_sprites.add(player)
 
-# Init the game
-pygame.init()
 
 #Game loop
 
