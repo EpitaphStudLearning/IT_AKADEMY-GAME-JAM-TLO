@@ -7,6 +7,7 @@ WIDTH = 1400
 HEIGHT = 800
 FPS = 60
 screen = pygame.display.set_mode((WIDTH,HEIGHT))
+background = pygame.image.load('assets/maps/level0.png')
 clock = pygame.time.Clock()
 
 # colors
@@ -30,6 +31,12 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = (WIDTH / 2, HEIGHT / 2)
 
+    def update(self):
+        self.rect.x += 5
+        if self.rect.left > WIDTH:
+            self.rect.right = 0
+
+
 #Sprites groups
 all_sprites = pygame.sprite.Group()
 player = Player()
@@ -43,14 +50,17 @@ pygame.init()
 running = True
 while   running :
     clock.tick(FPS)
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
     #Update
     all_sprites.update()
 
-    # Draw / render
+    # Draw / render / Background
     screen.fill(BLACK)
+    screen.fill((0, 0, 0))
+    screen.blit(background, (0, 0))
     all_sprites.draw(screen)
     pygame.display.flip()
 
