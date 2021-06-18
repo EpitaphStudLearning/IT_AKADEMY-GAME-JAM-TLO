@@ -1,4 +1,5 @@
 import pygame
+
 from pygame import mixer
 
 # Init the game
@@ -30,7 +31,7 @@ mixer.music.play(-1)
 
 # Instancing the Hero
 hero_image = pygame.image.load('assets/character/hero/Warrior/Individual Sprite/idle/Warrior_Idle_1.png')
-
+hero_x = 50
 
 
 class Player(pygame.sprite.Sprite):
@@ -62,6 +63,20 @@ while   running :
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+
+
+    # Player Input Controls
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_q]:
+        hero_x -= 2
+    if keys[pygame.K_d]:
+        hero_x += 2
+    if keys[pygame.K_z]:
+        ...
+    if keys[pygame.K_s]:
+        ...
+
+
     #Update
     all_sprites.update()
 
@@ -69,7 +84,7 @@ while   running :
     screen.fill(BLACK)
     screen.fill((0, 0, 0))
     screen.blit(background, (0, 0))
-    screen.blit(hero_image,(100,690))
+    screen.blit(hero_image,(hero_x,690))
     all_sprites.draw(screen)
     pygame.display.flip()
 
