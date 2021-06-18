@@ -28,6 +28,9 @@ pygame.display.set_icon(icon)
 mixer.music.load('assets/sounds/medieval.ogg')
 mixer.music.play(-1)
 
+# Instancing the Hero
+hero_image = pygame.image.load('assets/character/hero/Warrior/Individual Sprite/idle/Warrior_Idle_1.png')
+
 
 
 class Player(pygame.sprite.Sprite):
@@ -66,6 +69,7 @@ while   running :
     screen.fill(BLACK)
     screen.fill((0, 0, 0))
     screen.blit(background, (0, 0))
+    screen.blit(hero_image,(100,690))
     all_sprites.draw(screen)
     pygame.display.flip()
 
